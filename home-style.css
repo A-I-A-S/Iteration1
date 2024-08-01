@@ -98,7 +98,7 @@ body {
     margin: 20px auto; /* Center the element and allow spacing */
     position: relative;
 }
-
+/* Features container containing info and link on the features of scan and count pages*/
 .feature {
     display: flex;
     justify-content: center;
@@ -111,7 +111,32 @@ body {
     padding: 10px;
     min-width: 200px; /* Ensure some minimum width for smaller screens */
 }
-
+.left h2 {
+    margin-bottom: 10px; /* Add a gap between h2 and p */
+}
+.right h2 {
+    margin-bottom: 10px; /* Add a gap between h2 and p */
+}
+/* Left Column button for alignment with other button*/
+.left button {
+    padding: 10px 20px;
+    background-color: #114678;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 46px; /* Adjust the margin-top value to align the button */
+}
+/* Right Column button for alignment*/
+.right button {
+    padding: 10px 20px;
+    background-color: #114678;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Reset the margin-top value for the right button */
+}
 /* Buttons */
 button {
     padding: 10px 20px;
@@ -130,8 +155,8 @@ button:hover {
 .footer {
     width: 100%;
     padding: 10px 5%;
-    background: transparent;
-    display: flex;
+    background: transparent; /* Make the footer transparent so it behaves like a transparent background */
+    display: flex; /*makes the footer have a flexible display*/
     align-items: center;
     justify-content: space-between;
     margin-top: auto; /* Push the footer to the bottom of the page */
@@ -190,8 +215,8 @@ button:hover {
     text-align: center;
 }
 
-/* Media queries for smaller screens */
-@media only screen and (max-width: 768px) {
+/* Media queries for smaller screens, used some resources on flexible design https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design to learn how to use media queries */
+@media only screen and (max-width: 600px) {
     .footer {
         flex-direction: column;
         align-items: center;
@@ -222,7 +247,7 @@ button:hover {
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
 }
-
+/* Popup design and styling with fixed position and infront of home page content and the overflow so it can be scrolled on smaller screens */
 .popup-content {
     display: none;
     position: fixed;
@@ -265,7 +290,7 @@ button:hover {
     margin: 5px;
 }
 
-/* Media queries for smaller screens */
+/* Media queries for smaller screens, used some resources on flexible design https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design to learn how to use media queries */
 @media (max-width: 600px) {
     .popup-content {
         max-width: 100%;
