@@ -49,7 +49,7 @@ async function uploadData() {
         const xmlBlob = new Blob([xmlData], { type: 'application/xml' });
         const xmlFileName = `${productName}.xml`;
 
-        // Upload XML file to S3
+        // Upload XML file to S3 bucket (aiasimg)
         const s3 = new AWS.S3();
         const xmlParams = {
             Bucket: 'aiasimg',
@@ -57,11 +57,11 @@ async function uploadData() {
             Body: xmlBlob,
             ContentType: 'application/xml'
         };
-
+        //
         await s3.upload(xmlParams).promise();
         console.log('Successfully uploaded XML');
 
-        // Upload video file to S3
+        // Upload video file to S3 bucket (aiasscan)
         const videoFileName = `${productName}.${videoFile.name.split('.').pop()}`;
         const videoParams = {
             Bucket: 'aiasscan',
@@ -74,7 +74,7 @@ async function uploadData() {
         const videoUploadResult = await s3.upload(videoParams).promise();
         console.log('Successfully uploaded video', videoUploadResult);
         document.getElementById('result').innerHTML = `<p>Successfully uploaded video and product information! </p>`;
-
+      // alerts if an error occurs
     } catch (error) {
         console.error('Error in uploadData:', error);
         document.getElementById('result').innerHTML = `<p>Error: ${error.message}</p>`;
@@ -86,12 +86,12 @@ const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("inputFile");
 const imageView = document.getElementById("image-view");
 
-inputFile.addEventListener("change", uploadImage);
-
+inputFile.addEventListener("change", uploadImage); // Event listener for input file to change the file after 1 is uploaded already
+// Event listener for drag and drop
 dropArea.addEventListener("dragover", function(e) {
     e.preventDefault();
 });
-
+// Event listener for dropping in of file
 dropArea.addEventListener("drop", function(e) {
     e.preventDefault();
     inputFile.files = e.dataTransfer.files;
@@ -104,10 +104,12 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
   uploadData();
 });
 
+/* Function to upload video */
 function uploadImage() {
   const file = inputFile.files[0];
-  if (file.type.startsWith('video/')) {
-      let videoLink = URL.createObjectURL(file);
+  if (file.type.startsWith('video/')) { // checks if the file is a video
+      let videoLink = URL.createObjectURL(file); //creates a link to the video file
+      // creates the inner html for the video preview element
       imageView.innerHTML = `
           <div class="video-preview">
               <video width="100%" height="auto">
@@ -118,16 +120,16 @@ function uploadImage() {
                   <button type="button" onclick="changeUpload(event)">Change Upload</button>
               </div>
           </div>`;
-      imageView.style.border = 0;
-  } else if (file.type.startsWith('image/')) {
+      imageView.style.border = 0; // removes the border from the image view element
+  } else if (file.type.startsWith('image/')) { // checks if the file is an image
       let imgLink = URL.createObjectURL(file);
       imageView.innerHTML = `<img src="${imgLink}" alt="Uploaded Image" style="max-width: 100%; height: auto;">`;
       imageView.style.border = 0;
   } else {
-      alert('Please select a video or image file');
+      alert('Please select a video or image file'); // alerts if the file is not a video or image
   }
 }
-
+// Function to play the video when it is in upload area, used this resource as a guide of video playing: https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Client-side_web_APIs/Video_and_audio_APIs
 function playVideo(event) {
   event.preventDefault();
   const video = document.querySelector('.video-preview video');
@@ -135,7 +137,7 @@ function playVideo(event) {
       video.play();
   }
 }
-
+// Function to change the upload file when file is already in upload area
 function changeUpload(event) {
   event.preventDefault();
   inputFile.click();
