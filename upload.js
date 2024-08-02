@@ -7,7 +7,7 @@ AWS.config.credentials = new AWS.CognitoIdentityCredentials({
     IdentityPoolId: identityPoolId
 });
  
-// Function to authenticate user
+// Function to authenticate user with aws credentials, had gpt help with the error checking and explanation to understand roles to be added to the identity pool
 function authenticateUser() {
     return new Promise((resolve, reject) => {
         AWS.config.credentials.get(function(err) {
@@ -23,7 +23,7 @@ function authenticateUser() {
     });
 }
  
-// Function to upload data
+// Function to upload data, with authentication, and error handling to format and creation of xml and video files that are sent to s3
 async function uploadData() {
     try {
         await authenticateUser();
@@ -40,11 +40,11 @@ async function uploadData() {
  
         // Create XML data
         const xmlData = `
-<Product>
-<Name>${productName}</Name>
-<Description>${productDescription}</Description>
-<Cost>${productCost}</Cost>
-</Product>
+            <Product>
+            <Name>${productName}</Name>
+            <Description>${productDescription}</Description>
+            <Cost>${productCost}</Cost>
+            </Product>
         `;
         const xmlBlob = new Blob([xmlData], { type: 'application/xml' });
         const xmlFileName = `${productName}.xml`;
@@ -69,7 +69,7 @@ async function uploadData() {
             ContentType: videoFile.type
         };
  
-        // Shows the result of the upload of information so when successful, a success alert is shown and if an error occurs it will show it
+        // Shows the result of the upload of information so when successful, a success alert is shown and if an error occurs it will show it. Had GPT help with capturing and udnerstanding the errors and ensuring that correct roles/authentication of AWS systems were used ie. Cognito, identiy pool, roles. 
         const videoUploadResult = await s3.upload(videoParams).promise();
         console.log('Successfully uploaded video', videoUploadResult);
         document.getElementById('result').innerHTML = `<p>Successfully uploaded video and product information! </p>`;
@@ -83,7 +83,7 @@ async function uploadData() {
     }
 }
  
-// Drag and Drop for uploading image/video
+// Drag and Drop for uploading image/video. learnt and adapted from https://www.youtube.com/watch?v=5Fws9daTtIs
 const dropArea = document.getElementById("drop-area");
 const inputFile = document.getElementById("inputFile");
 const imageView = document.getElementById("image-view");
@@ -109,12 +109,12 @@ document.getElementById('uploadForm').addEventListener('submit', function(event)
     uploadData();
 });
  
-/* Function to upload video */
+/* Function to upload video */ 
 function uploadImage() {
     const file = inputFile.files[0];
     if (file.type.startsWith('video/')) { // checks if the file is a video
         let videoLink = URL.createObjectURL(file); //creates a link to the video file
-        // creates the inner html for the video preview element
+        // creates the inner html for the video preview element, used this resource as a guide for preview/controls. https://blog.teamtreehouse.com/building-custom-controls-for-html5-videos
         imageView.innerHTML = `
             <div class="video-preview">
             <video width="100%" height="auto">
