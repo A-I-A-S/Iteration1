@@ -289,7 +289,7 @@ button:hover {
 @media screen and (max-width: 800px) {
     .loader {
         margin-top: -60px;
-        margin-right:15%;
+        margin-right:10%;
     }
 }
 /* result display */
