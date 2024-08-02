@@ -69,7 +69,7 @@ body {
 }
 
 /* Media query for mobile devices */
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 800px) {
     .header {
         flex-direction: column; /* Stack the nav items vertically */
         align-items: center; /* Center the items horizontally */
@@ -216,7 +216,7 @@ button:hover {
 }
 
 /* Media queries for smaller screens, used some resources on flexible design https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout/Responsive_Design to learn how to use media queries */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 800px) {
     .footer {
         flex-direction: column;
         align-items: center;
