@@ -1,74 +1,67 @@
 <!doctype html>
-
-<html lang=”en”>
+<html lang="en">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="x-ua-compatible" content="ie=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <!-- Name of the web page -->
     <title>Artificial Intelligence Associated Stocktaking AIAS</title> 
-    <!-- Link to the main style sheet-->
     <link rel="stylesheet" href="count-style.css">
 </head>
-<body>    
-    <!-- Header -->
-    <header class="header">
-        <a href="#" class="logo">
-            <img src="AssociatedStocktakingLogo1.png" alt="Associated Stocktaking Logo" class="logo">
-        </a>
-        <nav class="navbar">
-            
-          <a href="index.html">Home</a></li>
-          <a href="scan-item.html">Scan Item</a></li>
-          <a href="count-products.html">Count Products</a></li>
-          <a href="privacy-policy.html">Privacy Policy</a></li>
-          <a href="terms-of-use.html">Terms of Use</a></li>
-            
-        </nav>
-    </header>
+<body>  
+    <div class="page-container">
+        <!-- Header -->
+        <header class="header">
+            <a href="index.html" class="logo">
+                <img src="AssociatedStocktakingLogo1.png" alt="Associated Stocktaking Logo" class="logo">
+            </a>
+            <nav class="navbar">
+                <a href="index.html">Home</a>
+                <a href="scan-item.html">Scan Item</a>
+                <a href="count-products.html">Count Products</a>
+                <a href="privacy-policy.html">Privacy Policy</a>
+                <a href="terms-of-use.html">Terms of Use</a>
+            </nav>
+        </header>
 
+        <main class="main-content">
+            <div id="introduction">
+                <h1>Count Products</h1>
+                <p>Once the products have been scanned and their details stored in the AIAS storage, the "Count Products" feature comes into play. This functionality allows users to quickly and accurately count the stock of each product by simply scanning them again. The system matches the scanned product with its database entry, providing instant recognition and updating the inventory count. This feature is invaluable during routine stocktakes, reducing the need for manual counting and ensuring that inventory data is always accurate and up-to-date.</p>
+                
+                <div class="feature"></div>
+                <!-- Upload Image -->
+                <div class="upload">
+                    <label for="input-file" id="drop-area">
+                        <input type="file" accept="image/*" id="input-file" hidden>
+                        <div id="image-view">
+                            <img src="upload_icon.png" alt="Upload icon">
+                            <p>Drag and drop or click here to upload an image or video</p>
+                        </div>
+                        <button type="button" onclick="uploadData()">Submit</button>
+                    </label>
+                </div>
+            </div>
+        </main>
 
-      <div id="introduction">
-        <h1>Count Products</h1>
-        <p><br>Once the products have been scanned and their details stored in the AIAS storage, the "Count Products" feature comes into play. This functionality allows users to quickly and accurately count the stock of each product by simply scanning them again. The system matches the scanned product with its database entry, providing instant recognition and updating the inventory count. This feature is invaluable during routine stocktakes, reducing the need for manual counting and ensuring that inventory data is always accurate and up-to-date.</p>
-        
-        <div class="feature">
-          
-        </div>
-            <!-- Upload Image -->
-        <div class="upload">
-          <label for="input-file" id="drop-area">
-              <input type="file" accept="image/*" id="input-file" hidden>
-              <div id="image-view">
-                  <img src="upload_icon.png">
-                  <p>Drag and drop or click here <br>to upload an image or video</p>
-              </div> 
-              <button type="button" onclick="uploadData()">Submit</button>
-          </label>
-        </div>
-      </div>
+        <!-- Footer of the AIAS webpage-->
+        <footer class="footer">
+            <a href="#" class="footer-logo">
+                <img src="AssociatedStocktakingLogo2.png" alt="Associated Stocktaking Logo 2">
+            </a>
+            <nav class="footer-nav">
+                <ul>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="scan-item.html">Scan Item</a></li>
+                    <li><a href="count-products.html">Count Products</a></li>
+                    <li><a href="privacy-policy.html">Privacy Policy</a></li>
+                    <li><a href="terms-of-use.html">Terms of Use</a></li>
+                </ul>
+            </nav>
+            <p class="copyright">&copy; 2024 Associated Stocktaking Services. All Rights Reserved.</p>
+        </footer>
+    </div>
 
-    <!-- Footer of the AIAS webpage-->
-    <footer class="footer">
-        <a href="#" class="footer-logo">
-            <img src="AssociatedStocktakingLogo2.png" alt="Associated Stocktaking Logo 2">
-        </a>
-        <nav class="footer-nav">
-            <ul>
-              <li><a href="index.html">Home</a></li>
-              <li><a href="scan-item.html">Scan Item</a></li>
-              <li><a href="count-products.html">Count Products</a></li>
-              <li><a href="privacy-policy.html">Privacy Policy</a></li>
-              <li><a href="terms-of-use.html">Terms of Use</a></li>   
-            </ul>
-        </nav>
-            
-        <p class="copyright">&copy; 2024 Associated Stocktaking Services. All Rights Reserved.</p>
-    </footer>
-    
-    <!-- Reference to your JavaScript file -->
     <script src="aiasScript.js"></script>
-
 </body>
 </html>
